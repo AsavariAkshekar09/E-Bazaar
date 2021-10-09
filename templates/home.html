@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- ========================= SECTION MAIN ========================= -->
+<section class="section-intro padding-y-sm">
+<div class="container">
+
+<div class="intro-banner-wrap">
+	<img src="{% static 'images/banners/cover.png' %}" class="img-fluid rounded">
+</div>
+
+</div> <!-- container //  -->
+</section>
+<!-- ========================= SECTION MAIN END// ========================= -->
+
+<!-- ========================= SECTION  ========================= -->
+<section class="section-name">
+<div class="container">
+
+<header class="section-heading">
+	<a href="{% url 'store' %}" class="btn btn-outline-primary float-right">See all</a>
+	<h3 class="section-title">What's Trending!</h3>
+</header><!-- sect-heading -->
+
+<div class="row">
+	{% for product in products %}
+	<div class="col-md-3">
+		<div class="card card-product-grid" style="height: 305px;">
+			<a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.images.url }}"> </a>
+			<figcaption class="info-wrap">
+				<a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
+				<div class="price mt-1">₹{{ product.price }}</div> <!-- price-wrap.// -->
+			</figcaption>
+		</div>
+	</div> <!-- col.// -->
+	{% endfor %}
+</div> <!-- row.// -->
+
+<div class="intro-banner-wrap py-3">
+	<img src="{% static 'images/banners/diwali.png' %}" class="img-fluid ">
+</div>
+
+</div><!-- container // -->
+</section>
+<!-- ========================= SECTION  END// ========================= -->
+<section class="py-4" id="instructors">
+        <div class="container">
+          	<h3 class="section-title">Best Offers on Products</h3>
+            <div class="row g-4 py-4"> <!--Row with gap 4-->
+							{% for product in offers %}
+                <div class="col-md-6 col-lg-3">
+                    <div class="card" style="height:450px;">
+                        <div class="card-body" style="background-color:#FAF2E9;">
+                            <img src="{{ product.images.url }}" class="mb-3" style="width:240px;height:270px;" >
+														<figcaption class="info-wrap">
+															<a href="{{ product.get_url }}" class="title" id="unique" style="font-size:15px;color: #008000;font-weight:bold;">{{ product.product_name }}</a>
+															<div class="price mt-1">₹ {{ product.final_price }}</div> <!-- price-wrap.// -->
+															MRP <del>₹ {{ product.initial_price }}</del>
+														</figcaption>
+														<a href="{{ product.get_url }}" class="btn btn-block btn-success mt-3">Visit Product</a>
+                        </div>
+                    </div>
+                </div>
+							{% endfor %}
+        </div>
+				<div class="intro-banner-wrap py-4">
+					<img src="{% static 'images/banners/deal.png' %}" class="img-fluid ">
+				</div>
+</section>
+
+</body>
+</html>
+
+{% endblock %}
