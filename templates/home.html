@@ -49,10 +49,10 @@
 							{% for product in offers %}
                 <div class="col-md-6 col-lg-3">
                     <div class="card" style="height:450px;">
-                        <div class="card-body" style="background-color:#FAF2E9;">
+                        <div class="card-body" style="background-color:#F6F1F1;">
                             <img src="{{ product.images.url }}" class="mb-3" style="width:240px;height:270px;" >
 														<figcaption class="info-wrap">
-															<a href="{{ product.get_url }}" class="title" id="unique" style="font-size:15px;color: #008000;font-weight:bold;">{{ product.product_name }}</a>
+															<a href="{{ product.get_url }}" class="title" id="unique" style="font-size:15px;color:#4c691a;font-weight:bold;">{{ product.product_name }}</a>
 															<div class="price mt-1">₹ {{ product.final_price }}</div> <!-- price-wrap.// -->
 															MRP <del>₹ {{ product.initial_price }}</del>
 														</figcaption>
@@ -63,16 +63,21 @@
 							{% endfor %}
         </div>
 
-				<div id="carouselExampleControls" class="carousel slide py-2 img-fluid rounded" data-ride="carousel">
+				<div class="intro-banner-wrap mt-3 pb-3">
+					<img src="{% static 'images/banners/deal.png' %}" class="img-fluid">
+				</div>
+
+
+				<div id="carouselExampleControls" class="carousel slide mt-4  pb-3 img-fluid rounded" data-ride="carousel" style="width:90%;display:block;margin:0 auto;">
 					  <div class="carousel-inner">
 					    <div class="carousel-item active">
-					      <img class="d-block w-100" src="{% static 'images/carousel/slide1.png' %}" alt="First slide">
+					      <img class="d-block w-100" src="{% static 'images/carousel/slide3.png' %}" alt="First slide">
 					    </div>
 					    <div class="carousel-item">
-					      <img class="d-block w-100" src="{% static 'images/carousel/slide2.png' %}" alt="Second slide">
+					      <img class="d-block w-100" src="{% static 'images/carousel/slide1.png' %}" alt="Second slide">
 					    </div>
 					    <div class="carousel-item">
-					      <img class="d-block w-100" src="{% static 'images/carousel/slide3.png' %}" alt="Third slide">
+					      <img class="d-block w-100" src="{% static 'images/carousel/slide2.png' %}" alt="Third slide">
 					    </div>
 					  </div>
 					  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -85,11 +90,7 @@
 					  </a>
 				</div>
 
-				<div class="intro-banner-wrap py-4">
-					<img src="{% static 'images/banners/deal.png' %}" class="img-fluid">
-				</div>
-
-				<div class="container mt-3" id="About" style="border:1px solid grey;border-radius: 5px; padding:20px 20px 0 20px;">
+				<div class="container mt-4" id="About" style="border:1px solid grey;border-radius: 5px; padding:20px 20px 0 20px;">
 						<h3>E-Bazaar -Online Grocery Store</h3>
 						<p>
 							Did you ever imagine that the freshest of fruits and vegetables,
@@ -105,7 +106,7 @@
 							along with great savings.Online grocery shopping has never been easier. Need things fresh? Whether it’s fruits
 							and vegetables or dairy and meat, we have this covered as well!
 							<br>
-							<a class="btn btn-primary btn-sm mt-3" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+							<a class="btn btn-primary btn-sm mt-3" id="hide-button" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
 								Read More...
 							</a>
 						</p>
@@ -123,14 +124,19 @@
 								bill value if the delivery is delayed. For all your order values above Rs. 1000, we provide free delivery.
 								A wide range of imported and gourmet products are available through our express delivery and slotted delivery service.
 								If you ever find an item missing on delivery or want to return a product, you can report it to us within 48 hours for
-								a ‘no-questions-asked’ refund.
+								a ‘no-questions-asked’ refund.The convenience of shopping for home and daily needs, while not compromising on quality, has made E-Bazaar.com
+								the online supermarket of choice for thousands of happy customers across India.E-Bazaar.com believes in providing the highest level of customer service and is continuously innovating
+								to meet customer expectations.
 							</p>
 						</div>
+
 				</div>
+
 </section>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+
 </html>
 
 {% endblock %}
