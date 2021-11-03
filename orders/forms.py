@@ -1,8 +1,8 @@
 from django import forms
 from .models import Order
 
+
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        field = ['first_name','last_name','phone','email','address_line_1','address_line_2','pincode','area','order_note']
-        exclude = ()
+        fields = ['first_name', 'last_name', 'email', 'phone', 'pincode', 'area', 'address_line_1', 'address_line_2', 'order_note']

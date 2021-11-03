@@ -37,10 +37,10 @@
 			<hr>
 
 			<div class="row">
-						<div class="item-option-select ml-2" style="width:30%;">
+						<div class="item-option-select ml-2" style="width:34%;">
 									<h6>Unit</h6>
 									<select name="unit" class="form-control" required>
-										<option value="" disabled selected>Select</option>
+										<!-- <option value="" disabled selected>Select</option> -->
 										{% for i in single_product.variation_set.units %}
 										<option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
 										{% endfor %}
@@ -49,10 +49,10 @@
 			</div>
 
 			<div class="row">
-						<div class="item-option-select ml-2" style="width:30%;">
+						<div class="item-option-select ml-2" style="width:34%;">
 									<h6>Type</h6>
 									<select name="type" class="form-control" required>
-										<option value="" disabled selected>Select</option>
+										<!-- <option value="" disabled selected>Select</option> -->
 										{% for i in single_product.variation_set.types %}
 										<option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
 										{% endfor %}
@@ -64,7 +64,7 @@
 				{% if single_product.stock <= 0 %}
 				 	<h5 class="text-danger">Out of Stock</h5>
 					{% else %}
-				  	<button type="submit" class="btn  btn-primary" style="width:30%;"><span class="text">Add to Cart</span><i class="fa fa-shopping-cart"></i></button>
+				  	<button type="submit" class="btn  btn-primary" style="width:34%;"><span class="text">Add to Cart</span><i class="fa fa-shopping-cart"></i></button>
 				{% endif %}
 		</article> <!-- product-info-aside .// -->
 </form>

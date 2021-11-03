@@ -6,6 +6,7 @@
 <div class="container">
 
 <!-- ============================ COMPONENT 1 ================================= -->
+
 {% if not cart_items %}
 	<img src="{% static './images/E-cart.png' %}" style="margin:0 auto;display:block;">
 	<h3 class="text-center">No items in your cart</h3>
@@ -33,7 +34,7 @@
 <tr>
 	<td>
 		<figure class="itemside align-items-center">
-			<div class="aside"><img src="{{ cart_item.product.images.url}}" class="img-sm ml-4"></div>
+			<div class="aside"><img src="{{ cart_item.product.images.url}}" class="img-sm ml-3"></div>
 			<figcaption class="info">
 				<a href="{{ cart_item.product.get_url }}" class="title text-dark text-md ml-2">{{ cart_item.product.product_name }}</a>
 
@@ -69,8 +70,8 @@
 	</td>
 	<td>
 		<div class="price-wrap" style="text-align:center;">
-			<var class="price">MRP ₹ {{ cart_item.sub_total }}</var>
-			<small class="text-muted"> MRP ₹ {{ cart_item.product.price }} each </small>
+			<var class="price">MRP ₹{{ cart_item.sub_total }}</var>
+			<small class="text-muted"> MRP ₹{{ cart_item.product.price }} each </small>
 		</div> <!-- price-wrap .// -->
 	</td>
 	<td class="">
