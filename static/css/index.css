@@ -1,3 +1,8 @@
+/* Hide Radio button */
+.rate > input{
+  display: none;
+}
+
 ul.thumb{
   margin: 0 auto;
   padding: 0;
@@ -11,7 +16,4 @@ ul.thumb li img{
   width: 80px;
   height: 80px;
   border: 1px solid grey;
-}
-.rounded-circle:hover{
-  colour:blue;
 }
