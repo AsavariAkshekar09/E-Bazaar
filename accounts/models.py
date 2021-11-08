@@ -35,7 +35,7 @@ class MyAccountManager(BaseUserManager):
         user.is_superadmin = True
         user.save(using=self._db)
         return user
-        
+
 class Account(AbstractBaseUser):
     first_name      = models.CharField(max_length=50)
     last_name       = models.CharField(max_length=50)
@@ -67,3 +67,21 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, add_label):
         return True
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(Account, on_delete=models.CASCADE)
+    address_line_1 = models.CharField(blank=True, max_length=100)
+    address_line_2 = models.CharField(blank=True, max_length=100)
+    profile_picture = models.ImageField(blank=True, upload_to='images/users/')
+    pincode = models.CharField(blank=True, max_length=20)
+    area = models.CharField(blank=True, max_length=20)
+    city = models.CharField(blank=True,  max_length=20)
+    state = models.CharField(blank=True, max_length=20)
+    phone_number = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.user.first_name
+
+    def full_address(self):
+        return f'{self.address_line_1} {self.address_line_2} {self.area} {self.city} {self.pincode}'

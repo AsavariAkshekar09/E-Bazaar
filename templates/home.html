@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 <!-- ========================= SECTION MAIN ========================= -->
+
 <section class="section-intro padding-y-sm">
 <div class="container">
 
@@ -24,15 +25,15 @@
 
 <div class="row">
 	{% for product in products %}
-	<div class="col-md-3">
-		<div class="card card-product-grid" style="height: 305px;">
-			<a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.images.url }}"> </a>
-			<figcaption class="info-wrap">
-				<a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
-				<div class="price mt-1">₹{{ product.price }}</div> <!-- price-wrap.// -->
-			</figcaption>
-		</div>
-	</div> <!-- col.// -->
+			<div class="col-md-3">
+				<div class="card card-product-grid" style="height:93%;">
+					<a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.images.url }}"> </a>
+					<figcaption class="info-wrap">
+						<a href="{{ product.get_url }}" class="title" style="font-size:16px;"><b>{{ product.product_name }}</b></a>
+						<div class="price mt-1 text-dark">₹ {{ product.price }}</div> <!-- price-wrap.// -->
+					</figcaption>
+				</div>
+			</div> <!-- col.// -->
 	{% endfor %}
 </div> <!-- row.// -->
 
@@ -49,13 +50,14 @@
 							{% for product in offers %}
                 <div class="col-md-6 col-lg-3">
                     <div class="card" style="height:450px;">
-                        <div class="card-body" style="background-color:#F6F1F1;">
+                        <div class="card-body" style="background-color:#FAF2E9;">
                             <img src="{{ product.images.url }}" class="mb-3" style="width:240px;height:270px;" >
 														<figcaption class="info-wrap">
 															<a href="{{ product.get_url }}" class="title" id="unique" style="font-size:15px;color:#4c691a;font-weight:bold;">{{ product.product_name }}</a>
 															<div class="price mt-1">₹ {{ product.final_price }}</div> <!-- price-wrap.// -->
 															MRP <del>₹ {{ product.initial_price }}</del>
 														</figcaption>
+
 														<a href="{{ product.get_url }}" class="btn btn-block btn-success mt-3">Visit Product</a>
                         </div>
                     </div>
@@ -63,12 +65,13 @@
 							{% endfor %}
         </div>
 
+
 				<div class="intro-banner-wrap mt-3 pb-3">
 					<img src="{% static 'images/banners/deal.png' %}" class="img-fluid">
 				</div>
 
 
-				<div id="carouselExampleControls" class="carousel slide mt-4  pb-3 img-fluid rounded" data-ride="carousel" style="width:90%;display:block;margin:0 auto;">
+				<div id="carouselExampleControls" class="carousel slide mt-3  pb-2 img-fluid rounded" data-ride="carousel" style="width:90%;display:block;margin:0 auto;">
 					  <div class="carousel-inner">
 					    <div class="carousel-item active">
 					      <img class="d-block w-100" src="{% static 'images/carousel/slide3.png' %}" alt="First slide">
@@ -133,7 +136,6 @@
 				</div>
 
 </section>
-
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 

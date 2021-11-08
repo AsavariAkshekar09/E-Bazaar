@@ -6,7 +6,7 @@
 <section class="section-pagetop bg">
 <div class="container">
 	{% if 'search' in request.path %}
-		<h2 class="title-page">Search Results</h2>
+		<h2 class="title-page">Your Search Results</h2>
 	{% else %}
 		<h2 class="title-page">Our Store</h2>
 	{% endif %}
@@ -20,9 +20,8 @@
 <div class="container">
 
 <div class="row">
-	<aside class="col-md-3">
-
-<div class="card">
+<aside class="col-md-3">
+<div class="card mr-3">
 	<article class="filter-group">
 		<header class="card-header">
 			<a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
@@ -32,95 +31,43 @@
 		</header>
 		<div class="filter-content collapse show" id="collapse_1" style="">
 			<div class="card-body">
-
 				<ul class="list-menu">
 					<li><a href="{% url 'store' %}">All Products</a></li>
 					{% for category in links %}
 					<li><a href="{{ category.get_url }}">{{ category.category_name }}</a></li>
 					{% endfor %}
 				</ul>
-
 			</div> <!-- card-body.// -->
 		</div>
 	</article> <!-- filter-group  .// -->
-	<article class="filter-group">
-		<header class="card-header">
-			<a href="#" data-toggle="collapse" data-target="#collapse_4" aria-expanded="true" class="">
-				<i class="icon-control fa fa-chevron-down"></i>
-				<h6 class="title">Sizes </h6>
-			</a>
-		</header>
-		<div class="filter-content collapse show" id="collapse_4" style="">
-			<div class="card-body">
-			  <label class="checkbox-btn">
-			    <input type="checkbox">
-			    <span class="btn btn-light"> XS </span>
-			  </label>
 
-			  <label class="checkbox-btn">
-			    <input type="checkbox">
-			    <span class="btn btn-light"> SM </span>
-			  </label>
-
-			  <label class="checkbox-btn">
-			    <input type="checkbox">
-			    <span class="btn btn-light"> LG </span>
-			  </label>
-
-			  <label class="checkbox-btn">
-			    <input type="checkbox">
-			    <span class="btn btn-light"> XXL </span>
-			  </label>
-		</div><!-- card-body.// -->
+	<div id="collapse_2" style="border-bottom:1px solid #e6e6e6; ">
+		<img class="card-img-top" src="{% static './images/pay-cash.jpg' %}" alt="Card image cap" >
+		<div class="card-body" style="background:#ffeb99;py-2">
+			<h5 class="card-title">Pay by Cash/Card on Delivery</h5>
+			<p class="card-text">
+				Ordering for the first time? Worried how the service is going to be? You can place your order now and opt to complete payment by Cash or Card after receiving your order.
+			</p>
+			<a href="#" class="btn btn-dark btn-sm py-2 mt-1">Know more</a>
 		</div>
-	</article> <!-- filter-group .// -->
+	</div>
 
-	<article class="filter-group">
-		<header class="card-header">
-			<a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" class="">
-				<i class="icon-control fa fa-chevron-down"></i>
-				<h6 class="title">Price range </h6>
-			</a>
-		</header>
-		<div class="filter-content collapse show" id="collapse_3" style="">
-			<div class="card-body">
-
-				<div class="form-row">
-				<div class="form-group col-md-6">
-				  <label>Min</label>
-				  <!-- <input class="form-control" placeholder="$0" type="number"> -->
-				  	<select class="mr-2 form-control">
-						<option value="0">$0</option>
-						<option value="50">$50</option>
-						<option value="100">$100</option>
-						<option value="150">$150</option>
-						<option value="200">$200</option>
-						<option value="500">$500</option>
-						<option value="1000">$1000</option>
-					</select>
-				</div>
-				<div class="form-group text-right col-md-6">
-				  <label>Max</label>
-				  	<select class="mr-2 form-control">
-						<option value="50">$50</option>
-						<option value="100">$100</option>
-						<option value="150">$150</option>
-						<option value="200">$200</option>
-						<option value="500">$500</option>
-						<option value="1000">$1000</option>
-						<option value="2000">$2000+</option>
-					</select>
-				</div>
-				</div> <!-- form-row.// -->
-				<button class="btn btn-block btn-primary">Apply</button>
-			</div><!-- card-body.// -->
+	<div id="collapse_3" >
+		<img class="card-img-top" src="{% static './images/refund1.jpg' %}" alt="Card image cap">
+		<div class="card-body" style="background:#b3ecff;py-2">
+			<h5 class="card-title">Return And Refunds</h5>
+			<p class="card-text">
+				Now shop Stress Free. Products purchased from our site can be returned for a refund at any DMart Ready store within 7 days from the date of the invoice provided.
+			</p>
+			<a href="#" class="btn btn-dark btn-sm py-2 mt-1">Know more</a>
 		</div>
-	</article> <!-- filter-group .// -->
+	</div>
 
 </div> <!-- card.// -->
 
-	</aside> <!-- col.// -->
-	<main class="col-md-9">
+</aside> <!-- col.// -->
+
+<main class="col-md-9">
 
 <header class="border-bottom mb-4 pb-3">
 		<div class="form-inline">
@@ -132,7 +79,7 @@
 <div class="row">
 	{% if products %}
 	{% for product in products %}
-	<div class="col-md-4">
+	<div class="col-md-4" >
 		<figure class="card card-product-grid">
 			<div class="img-wrap">
 
@@ -153,9 +100,9 @@
 	{% endfor %}
 	{% else %}
 	<div style="margin-top:13px;">
-			<img src="{% static './images/mid-img.png' %}" style="margin-left:353px;">
+			<img src="{% static './images/Empty-pana.svg' %}" style="margin-left:45%;width:53%;">
 			<h3 style="margin-left:282px;">Sorry! No matching results found</h3>
-			<p class="text-sm" style="margin-left:372px;color:dim-grey;">Try a different keyword maybe?</p>
+			<p  class="text-muted" style="margin-left:372px;font-size:17px;">Try a different keyword maybe?</p>
 	</div>
 	{% endif %}
 </div> <!-- row end.// -->
