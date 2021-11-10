@@ -45,29 +45,13 @@ class Order(models.Model):
         return f'{self.first_name} {self.last_name}'
 
     def full_address(self):
-        return f'{self.address_line_1} {self.address_line_2}'
+        return f'{self.address_line_1} {self.address_line_2} {self.area}'
 
     def __str__(self):
         return self.first_name
 
 
 class OrderProduct(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    payment = models.ForeignKey(Payment, on_delete=models.SET_NULL, blank=True, null=True)
-    user = models.ForeignKey(Account, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    variations = models.ManyToManyField(Variation, blank=True)
-    quantity = models.IntegerField()
-    product_price = models.FloatField()
-    ordered = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.product.product_name
-
-
-class ReorderOrderProduct(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     payment = models.ForeignKey(Payment, on_delete=models.SET_NULL, blank=True, null=True)
     user = models.ForeignKey(Account, on_delete=models.CASCADE)
