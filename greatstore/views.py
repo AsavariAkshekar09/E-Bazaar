@@ -19,3 +19,6 @@ def home(request):
     }
 
     return render(request, 'home.html',context)
+
+def faq(request):
+    return render(request, 'faq.html')
