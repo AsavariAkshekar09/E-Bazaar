@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import RegistrationForm, UserForm, UserProfileForm
 from .models import Account, UserProfile
-from orders.models import Order,  OrderProduct
+from orders.models import Order, OrderProduct
 from django.contrib import messages, auth
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -296,3 +296,23 @@ def order_detail(request, order_id):
         'subtotal': subtotal,
     }
     return render(request, 'accounts/order_detail.html', context)
+
+@login_required(login_url='login')
+def my_list(request):
+    orders = Order.objects.filter(user=request.user, is_ordered=True).order_by('-created_at')
+    context = {
+        'orders' : orders,
+    }
+    return render(request, 'accounts/my_list.html', context)
+
+@login_required(login_url='login')
+def my_list_detail(request, order_id):
+    order_detail = OrderProduct.objects.filter(order__order_number=order_id)
+    order = Order.objects.get(order_number=order_id)
+
+    context = {
+        'order_detail': order_detail,
+        'order': order,
+
+    }
+    return render(request, 'accounts/my_list_detail.html', context)

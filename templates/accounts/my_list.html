@@ -11,7 +11,7 @@
 	<main class="col-md-9">
 		<article class="card">
 		<header class="card-header">
-			<strong class="d-inline-block mr-3">Your order History</strong>
+			<strong class="d-inline-block mr-3">Add to Cart from Purchase History</strong>
 		</header>
 
 		<div class="card-body">
@@ -23,19 +23,19 @@
 						    <tr>
 						      <th class="text-center">Order ID</th>
 						      <th class="text-center">Billing Name</th>
-						      <th class="text-center">Contact</th>
 						      <th class="text-center">Order Total</th>
 									<th class="text-center">Date</th>
+									<th class="text-center">Order Note</th>
 						    </tr>
 						  </thead>
 						  <tbody>
 								{% for order in orders %}
 						    <tr>
-						      <th class="text-center"><a href="{% url 'order_detail' order.order_number %}">{{ order.order_number }}</a></th>
+						      <th class="text-center"><a href="{% url 'my_list_detail' order.order_number %}">{{ order.order_number }}</a></th>
 						      <td class="text-center">{{ order.full_name }}</td>
-						      <td class="text-center">{{ order.phone }}</td>
 						      <td class="text-center">₹ {{ order.order_total }}</td>
 									<td class="text-center">{{ order.created_at }}</td>
+									<td class="text-center">{{ order.order_note }}</td>
 						    </tr>
 								{% endfor %}
 						  </tbody>
@@ -43,8 +43,11 @@
 				</div>
 				{% else %}
 				<div  style="margin:0 auto; display:block; margin-top:7px;">
-						<img src="{% static './images/Empty-cuate.svg' %}">
-						<h5 class="text-muted">You do not have any previous orders</h5>
+						<img src="{% static './images/E-cart.png' %}" style="margin:0 auto; display:block;">
+						<h5 class="text-muted mt-2">You don't have any purchase history</h5>
+            <div class="text-center ">
+              <a href="{% url 'store' %}" class="btn btn-primary mt-2">Buy Now</a>
+            </div>
 				</div>
 				{% endif %}
 			</div> <!-- row.// -->
