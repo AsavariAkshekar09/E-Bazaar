@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="loader_bg">
+      <div class="loader"></div>
+</div>
+<div class="container" style="margin-top: 5px;">
+    <center><img src="{% static 'images/Confirmed.gif' %}" alt=""></center>
+	<div class="text-center">
+		<a href="{% url 'store' %}" class="btn btn-primary">Shop more</a>
+	</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    setTimeout(function(){
+        $('.loader_bg').fadeToggle();
+    }, 2000);
+</script>
+{% endblock %}

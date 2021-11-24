@@ -28,7 +28,7 @@
 	{% csrf_token %}
 		<article class="content-body">
 			<h3 class="title">{{ single_product.product_name }}</h3>
-			<div class="rating-star">
+			<div class="rating-star" style="font-size:17px;">
 				<span>
 						<i class="fa fa-star{% if single_product.averageReview < 0.5 %}-o{% elif single_product.averageReview >= 0.5 and single_product.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
 					  <i class="fa fa-star{% if single_product.averageReview < 1.5 %}-o{% elif single_product.averageReview >= 1.5 and single_product.averageReview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
@@ -76,6 +76,7 @@
 				 	<h5 class="text-danger">Out of Stock</h5>
 					{% else %}
 				  	<button type="submit" class="btn  btn-primary" style="width:34%;"><span class="text">Add to Cart</span><i class="fa fa-shopping-cart"></i></button>
+						<a href="#" class="btn  btn-outline-primary ml-3" style="width:34%;"> <span class="text">Add to List</span> <i class="fas fa-clipboard-list"></i>  </a>
 				{% endif %}
 		</article> <!-- product-info-aside .// -->
 </form>
@@ -131,7 +132,7 @@
 </div>
 	<header class="section-heading mt-5">
 		<h3>Customer Reviews </h3>
-			<div class="rating-star">
+			<div class="rating-star" style="font-size:17px;">
 				<span>
 						<i class="fa fa-star{% if single_product.averageReview < 0.5 %}-o{% elif single_product.averageReview >= 0.5 and single_product.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
 					  <i class="fa fa-star{% if single_product.averageReview < 1.5 %}-o{% elif single_product.averageReview >= 1.5 and single_product.averageReview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>

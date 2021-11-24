@@ -91,8 +91,6 @@ class Offers(models.Model):                           #Home Page
         final_price     = models.IntegerField()
         images          = models.ImageField(upload_to='photos/products')
         stock           = models.IntegerField()
-        unit            = models.TextField(max_length=25,blank=True)
-        brand           = models.TextField(max_length=100,blank=True)
         is_available    = models.BooleanField(default=True)
         category        = models.ForeignKey(Category, on_delete=models.CASCADE) #delete the products when the respective category is deleted
         created_date    = models.DateTimeField(auto_now_add=True)
@@ -103,6 +101,26 @@ class Offers(models.Model):                           #Home Page
 
         def __str__(self):            #string representation of the model
             return self.product_name
+
+
+class New(models.Model):                           #Home Page
+        product_name    = models.CharField(max_length=200, unique=True)
+        slug            = models.SlugField(max_length=200, unique=True)
+        description     = models.TextField(max_length=500, blank=True)
+        final_price     = models.IntegerField()
+        images          = models.ImageField(upload_to='photos/products')
+        stock           = models.IntegerField()
+        is_available    = models.BooleanField(default=True)
+        category        = models.ForeignKey(Category, on_delete=models.CASCADE) #delete the products when the respective category is deleted
+        created_date    = models.DateTimeField(auto_now_add=True)
+        modified_date   = models.DateTimeField(auto_now=True)
+
+        def get_url(self):
+            return reverse('product_detail', args=[self.category.slug, self.slug])
+
+        def __str__(self):            #string representation of the model
+            return self.product_name
+
 
 
 class ProductGallery(models.Model):
@@ -116,7 +134,6 @@ class ProductGallery(models.Model):
     class Meta:
         verbose_name = 'productgallery'
         verbose_name_plural = 'product gallery'
-
 
 
 class ReviewRating(models.Model):

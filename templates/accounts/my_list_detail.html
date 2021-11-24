@@ -6,13 +6,9 @@
   .only:hover{
     color:#0000ff !important;
   }
-  .header {
-        position: sticky;
-        top:0;
-        }
-  .container {
+  /* .container {
       overflow: auto;
-  }
+  } */
   .my-custom-scrollbar {
   position: relative;
   height: 580px;
@@ -63,19 +59,19 @@
   }
 </style>
 <div class="container table-wrapper-scroll-y my-custom-scrollbar mt-5" >
-          <table class="table table-fixed" style="width:90%;margin:0 auto;diplay:block;font-size:16.3px;">
+          <table class="table table-fixed" style="width:100%;margin:0 auto;diplay:block;font-size:17px;">
               <thead>
                   <tr>
                       <th class=" text-center ">Products</th>
                       <th class=" text-center ">Quantity</th>
                       <th class=" text-center">Total</th>
-                      <th class=" text-center ">Status</th>
+                      <th class=" text-center">Status</th>
                   </tr>
               </thead>
               <tbody>
                 {% for item in order_detail %}
                   <tr>
-                      <td style="width:48%;">
+                      <td style="width:35%;">
                           <figure class="itemside align-items-center">
                               <div class="aside"><a href="{{ item.product.get_url }}"><img src="{{ item.product.images.url}}" class="img-sm ml-3"></a></div>
                               <figcaption class="info ml-1">
@@ -107,57 +103,5 @@
 
   </div>
 
-  <!-- <div class="table-wrapper-scroll-y my-custom-scrollbar">
-
-    <table class="table table-bordered table-striped mb-0">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-        <tr>
-          <th scope="row">4</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">5</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">6</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </table>
-
-  </div> -->
 
 {% endblock %}

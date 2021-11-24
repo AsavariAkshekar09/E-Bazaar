@@ -106,6 +106,9 @@ def place_order(request, total=0, quantity=0,):
             data.area = form.cleaned_data['area']
             data.address_line_1 = form.cleaned_data['address_line_1']
             data.address_line_2 = form.cleaned_data['address_line_2']
+            data.payment_mode = form.cleaned_data['payment_mode']
+            data.time = form.cleaned_data['time']
+            data.date = form.cleaned_data['date']
             data.order_note = form.cleaned_data['order_note']
             data.order_total = grand_total
             data.tax = tax
@@ -134,6 +137,7 @@ def place_order(request, total=0, quantity=0,):
     else:
         return redirect('checkout')
 
+
 def order_complete(request):
     order_number = request.GET.get('order_number')
     transID = request.GET.get('payment_id')
@@ -159,3 +163,9 @@ def order_complete(request):
         return render(request, 'orders/order_complete.html', context)
     except (Payment.DoesNotExist, Order.DoesNotExist):
         return redirect('home')
+
+def cod(request):
+    # Clear cart
+    CartItem.objects.filter(user=request.user).delete()
+
+    return render(request, 'orders/cod.html')

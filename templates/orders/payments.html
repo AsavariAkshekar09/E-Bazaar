@@ -25,7 +25,7 @@
 <div class="card">
       <h5 class="card-header">Payment Method</h5>
       <div class="card-body">
-        <p class="card-text">Paypal</p>
+        <p class="card-text">{{ order.payment_mode }}</p>
       </div>
 </div>
 <div class="card">
@@ -99,6 +99,10 @@
 		 <div id="paypal-button-container">
 			 <!-- Paypal Button will load -->
 		 </div>
+		 <h6 class="text-center">OR</h6>
+		 <a href="{% url 'cod' %}"  class="btn cod" style = "width:100%;height: 100%; background:#0070ba; color:white; border-radius:4px;font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">
+			 Cash On Delivery<i class="fas fa-truck ml-2"></i>
+		 </a>
 
 		</div> <!-- card-body.// -->
 		</div> <!-- card.// -->
@@ -134,7 +138,7 @@
 				var url = "{% url 'payments' %}"
 				const csrftoken = getCookie('csrftoken');
 				var orderID = "{{ order.order_number }}"
-				var payment_method = 'Paypal'
+				var payment_method = "{{ order.payment_mode }}"
 				var redirect_url = "{% url 'order_complete' %}"
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
@@ -188,6 +192,8 @@
 
 
         }).render('#paypal-button-container');
+
+
 </script>
 
 {% endblock %}

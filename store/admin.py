@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Variation, Trending, ProductGallery, Offers, ReviewRating
+from .models import Product, Variation, Trending, ProductGallery, Offers, ReviewRating, New
 import admin_thumbnails
 
 # Register your models here.
@@ -25,3 +25,4 @@ admin.site.register(Trending)
 admin.site.register(ProductGallery)
 admin.site.register(Offers)
 admin.site.register(ReviewRating)
+admin.site.register(New)

@@ -56,7 +56,7 @@
 		<div class="form-row">
 			<div class="col form-group">
 				<label for="">Select a Time Slot</label>
-				<select class="form-control" name="">
+				<select class="form-control" name="time" required>
 					<option value="7:00AM - 9:30AM">7:00AM - 9:30AM</option>
 					<option value="9:00AM - 12:00PM">9:00AM - 12:00PM</option>
 					<option value="4:00PM - 6:00PM">4:00PM - 6:00PM</option>
@@ -64,17 +64,21 @@
 			</div>
 			<div class="col form-group">
 				<label for="">Select a Day</label>
-				<select class="form-control" name="">
-					<option value="">Monday</option>
-					<option value="">Wednesday</option>
-					<option value="">Friday</option>
-				</select>
+				<input type="date"  name="date" class="form-control" required>
 			</div>
 	</div>
   <div class="form-row">
+			<div class="col form-group">
+				<label>Mode of Payment</label><small class="text-muted"> ( Paypal / COD ) </small>
+				<select class="form-control" name="payment_mode" required>
+					<option value="Paypal">Paypal</option>
+					<option value="COD">COD</option>
+				</select>
+				<!-- <input type="text" name="payment_mode" class="form-control" required></input> -->
+			</div>
       <div class="col form-group">
         <label for="">Order Note</label>
-        <textarea name="order_note" rows="2" class="form-control"></textarea>
+        <input type="text" name="order_note" class="form-control"></input>
       </div>
    </div>
 
@@ -142,4 +146,6 @@
 </div> <!-- container .//  -->
 </section>
 <!-- ========================= SECTION CONTENT END// ========================= -->
+
+
 {% endblock %}
