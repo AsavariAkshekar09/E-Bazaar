@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from category.models import Category
 from django.urls import reverse
 from accounts.models import Account
@@ -16,6 +17,7 @@ class Product(models.Model):                            #Store Page
     category        = models.ForeignKey(Category, on_delete=models.CASCADE) #delete the products when the respective category is deleted
     created_date    = models.DateTimeField(auto_now_add=True)
     modified_date   = models.DateTimeField(auto_now=True)
+    
 
     def get_url(self):
         return reverse('product_detail', args=[self.category.slug, self.slug])

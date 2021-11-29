@@ -163,9 +163,3 @@ def order_complete(request):
         return render(request, 'orders/order_complete.html', context)
     except (Payment.DoesNotExist, Order.DoesNotExist):
         return redirect('home')
-
-def cod(request):
-    # Clear cart
-    CartItem.objects.filter(user=request.user).delete()
-
-    return render(request, 'orders/cod.html')

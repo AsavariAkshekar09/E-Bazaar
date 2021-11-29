@@ -5,8 +5,8 @@ from orders.models import Order, OrderProduct
 from django.contrib import messages, auth
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
-
+from django.http import HttpResponse, HttpResponseRedirect
+from store.models import Product
 
 #Verification Email
 from django.contrib.sites.shortcuts import get_current_site
@@ -316,3 +316,14 @@ def my_list_detail(request, order_id):
 
     }
     return render(request, 'accounts/my_list_detail.html', context)
+
+
+# Wish list
+@login_required(login_url='login')
+def add_to_wishlist(request, id):
+    product = get_object_or_404(Product, id=id)
+    if product.users_wishlist.filter(id = request.user.id).exists():
+        product.users_wishlist.remove(request.user)
+    else:
+        product.users_wishlist.add(request.user)
+    return HttpResponseRedirect(request.META["HTTP_REFERER"])
